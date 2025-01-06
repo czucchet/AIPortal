@@ -1,0 +1,232 @@
+/* General Styles */
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+/* Top Navigation Bar */
+.top-nav {
+  display: flex;
+  justify-content: flex-end; /* Align user profile to the right */
+  align-items: center;
+  background-color: #003366; /* Dark blue */
+  padding: 0 20px; /* Add horizontal padding for spacing */
+  margin: 0; /* Remove margin */
+  color: #003366;
+  width: 100%; /* Ensure it spans the full width */
+  height: 60px; /* Set a fixed height */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  position: fixed; /* Fix the top navigation bar */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  z-index: 999; /* Lower z-index to ensure sidebar is on top */
+}
+
+/* User Profile Styles */
+.user-profile {
+  position: relative;
+  cursor: pointer;
+}
+
+.user-profile-text {
+  color: white; /* White text color */
+  font-size: 16px; /* Adjust font size */
+  padding: 10px; /* Add padding for better clickability */
+  display: inline-flex;
+  align-items: center;
+}
+
+.user-profile-text::after {
+  content: ' \25BC'; /* Unicode for down arrow */
+  margin-left: 5px;
+  font-size: 0.8em;
+}
+
+.dropdown-content {
+  display: none;
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  min-width: 160px;
+}
+
+.dropdown-content.visible {
+  display: block;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: #003366;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Side Navigation Menu */
+.side-nav {
+  width: 250px;
+  background-color: #003366; /* Dark blue */
+  height: 100vh; /* Full viewport height */
+  position: fixed;
+  top: 0; /* Align to the top of the page */
+  left: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000; /* Higher z-index to ensure it's on top */
+}
+
+.sidebar-logo {
+  text-align: center;
+  margin-bottom: 20px; /* Add space below the logo */
+}
+
+.sidebar-logo-img {
+  height: 40px; /* Set a fixed height */
+  width: auto; /* Maintain aspect ratio */
+}
+
+.side-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1; /* Push the rest of the content down */
+}
+
+.side-nav ul li {
+  margin: 15px 0;
+}
+
+.side-nav ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.side-nav ul li a:hover,
+.side-nav ul li a.active {
+  background-color: #004080; /* Slightly lighter blue */
+}
+
+.submenu {
+  display: none;
+  margin-left: 20px;
+}
+
+.submenu.visible {
+  display: block;
+}
+
+/* Central Content Area */
+.content {
+  margin-left: 250px; /* Adjust based on side-nav width */
+  margin-top: 20px; /* Adjust based on top-nav height */
+  height: calc(80vh - 60px); /* Full height minus top-nav */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  text-align: center;
+  overflow-y: auto; /* Allow scrolling only within the content area if needed */
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.input-area {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center horizontally */
+  gap: 10px; /* Space between text box and button */
+  width: 80%; /* Make the input area wider */
+  max-width: 600px; /* Set a maximum width */
+}
+
+.input-area input {
+  width: 100%; /* Make the text box span the full width of its container */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-area button {
+  width: 40%; /* Make the button span the full width of its container */
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue accent */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-area button:hover {
+  background-color: #0056b3; /* Darker blue */
+}
+
+/* Footer */
+.footer {
+  position: fixed; /* Fix the footer at the bottom */
+  bottom: 0; /* Align to the bottom */
+  left: 250px; /* Adjust based on side-nav width */
+  width: calc(100% - 250px); /* Adjust width based on side-nav */
+  background-color: #333; /* Darker shade of grey */
+  color: white;
+  text-align: center;
+  padding: 10px 0; /* Add vertical padding */
+  margin: 0; /* Remove margin */
+  z-index: 998; /* Lower z-index to ensure sidebar is on top */
+}
+
+.footer a {
+  color: #007bff; /* Blue accent */
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .side-nav {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+    z-index: 1000; /* Ensure sidebar stays on top on smaller screens */
+  }
+
+  .content {
+    margin-left: 0;
+    margin-top: 60px; /* Adjust based on top-nav height */
+  }
+
+  .footer {
+    left: 0;
+    width: 100%;
+  }
+}
+
+:root {
+  --sidebar-bg-color:  grey; /* Default color */
+}
+
+.side-nav {
+  background-color: var(--sidebar-bg-color);
+  /* Other styles */
+}
